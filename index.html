@@ -204,7 +204,7 @@ Module.expectedDataFileDownloads++;
     }
     var PACKAGE_NAME = 'main.data';
     var REMOTE_PACKAGE_NAME = (Module['filePackagePrefixURL'] || '') + 'main.data';
-    var REMOTE_PACKAGE_SIZE = 20458;
+    var REMOTE_PACKAGE_SIZE = 1266;
     var PACKAGE_UUID = '51f84d03-0c74-4552-ac13-924e79e76977';
   
     function fetchRemotePackage(packageName, packageSize, callback, errback) {
@@ -305,14 +305,7 @@ function assert(check, msg) {
       },
     };
 
-      new DataRequest(0, 20458, 0, 0).open('GET', 'main.ax');
-      new DataRequest(0, 0, 0, 0).open('GET', 'GameBoyPallet.pal');
-      new DataRequest(0, 0, 0, 0).open('GET', 'pic_Entity.png');
-      new DataRequest(0, 0, 0, 0).open('GET', 'pic_text.png');
-      new DataRequest(0, 0, 0, 0).open('GET', 'se0.wav');
-      new DataRequest(0, 0, 0, 0).open('GET', 'se1.wav');
-      new DataRequest(0, 0, 0, 0).open('GET', 'se2.wav');
-      new DataRequest(0, 0, 0, 0).open('GET', 'se3.wav');
+      new DataRequest(0, 1266, 0, 0).open('GET', 'main.ax');
 
 
     function processPackageData(arrayBuffer) {
@@ -327,13 +320,6 @@ function assert(check, msg) {
       DataRequest.prototype.byteArray = Module['HEAPU8'].subarray(ptr, ptr+byteArray.length);
 
           DataRequest.prototype.requests["main.ax"].onload();
-          DataRequest.prototype.requests["GameBoyPallet.pal"].onload();
-          DataRequest.prototype.requests["pic_Entity.png"].onload();
-          DataRequest.prototype.requests["pic_text.png"].onload();
-          DataRequest.prototype.requests["se0.wav"].onload();
-          DataRequest.prototype.requests["se1.wav"].onload();
-          DataRequest.prototype.requests["se2.wav"].onload();
-          DataRequest.prototype.requests["se3.wav"].onload();
 
           Module['removeRunDependency']('datafile_main.data');
 
@@ -410,7 +396,7 @@ function assert(check, msg) {
 
 
     </script>
-    <script async type="text/javascript" src="hsp3dishw.js"></script>
-  <p><font size="2" color="#c0c0c0">powered by <a href="https://hsp.tv/make/hsp3dish.html" target="_blank">hsp3dishw.js</a> / OpenHSP</font></p>
+    <script async type="text/javascript" src="hsp3dish.js"></script>
+  <p><font size="2" color="#c0c0c0">powered by <a href="https://hsp.tv/make/hsp3dish.html" target="_blank">hsp3dish.js</a> / OpenHSP</font></p>
   </body>
 </html>
