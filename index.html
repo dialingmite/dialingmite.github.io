@@ -8,7 +8,6 @@
       body {
         font-family: arial;
         margin: 0;
-        background-color: black;
         padding: none;
       }
 
@@ -37,10 +36,10 @@
         -o-animation: rotation .8s linear infinite;
         animation: rotation 0.8s linear infinite;
 
-        border-left: 5px solid rgb(0, 0, 0);
-        border-right: 5px solid rgb(0, 0, 0);
-        border-bottom: 5px solid rgb(0, 0, 0);
-        border-top: 5px solid rgb(0, 0, 0);
+        border-left: 5px solid rgb(235, 235, 235);
+        border-right: 5px solid rgb(235, 235, 235);
+        border-bottom: 5px solid rgb(235, 235, 235);
+        border-top: 5px solid rgb(120, 120, 120);
         
         border-radius: 100%;
         background-color: rgb(189, 215, 46);
@@ -87,12 +86,12 @@
 
       #output {
         width: 100%;
-        height: 64px;
+        height: 200px;
         margin: 0 auto;
         margin-top: 10px;
         display: block;
         background-color: black;
-        color: rgb(120, 120, 120);
+        color: white;
         font-family: 'Lucida Console', Monaco, monospace;
         outline: none;
       }
@@ -204,7 +203,7 @@ Module.expectedDataFileDownloads++;
     }
     var PACKAGE_NAME = 'main.data';
     var REMOTE_PACKAGE_NAME = (Module['filePackagePrefixURL'] || '') + 'main.data';
-    var REMOTE_PACKAGE_SIZE = 1282;
+    var REMOTE_PACKAGE_SIZE = 18801;
     var PACKAGE_UUID = '51f84d03-0c74-4552-ac13-924e79e76977';
   
     function fetchRemotePackage(packageName, packageSize, callback, errback) {
@@ -305,7 +304,7 @@ function assert(check, msg) {
       },
     };
 
-      new DataRequest(0, 1282, 0, 0).open('GET', 'main.ax');
+      new DataRequest(0, 18801, 0, 0).open('GET', 'main.ax');
 
 
     function processPackageData(arrayBuffer) {
@@ -336,10 +335,10 @@ function assert(check, msg) {
         fetchedCallback = processPackageData;
       }
     
-        ENV.HSP_WX = "320";//スクリプトの動作解像度
-        ENV.HSP_WY = "480";
-        ENV.HSP_SX = "320";//表示解像度
-        ENV.HSP_SY = "480";
+        ENV.HSP_WX = "360";//スクリプトの動作解像度
+        ENV.HSP_WY = "640";
+        ENV.HSP_SX = "360";//表示解像度
+        ENV.HSP_SY = "640";
         ENV.HSP_AUTOSCALE = "0";//スケーリングモード
         ENV.HSP_FPS = "0";//フレームレート
         ENV.HSP_LIMIT_STEP = "15000";//ブラウザに処理を返すまでの実行ステップ数
@@ -397,6 +396,6 @@ function assert(check, msg) {
 
     </script>
     <script async type="text/javascript" src="hsp3dish.js"></script>
-  <p><font size="2" color="#c0c0c0">powered by <a href="https://hsp.tv/make/hsp3dish.html" target="_blank">hsp3dish.js</a> / OpenHSP</font></p>
+  <p><font size="2" color="#404040">powered by <a href="https://hsp.tv/make/hsp3dish.html" target="_blank">hsp3dish.js</a> / OpenHSP</font></p>
   </body>
 </html>
