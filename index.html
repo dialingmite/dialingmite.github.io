@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>cell - HSP3Dish</title>
+    <title>main - HSP3Dish</title>
     <style>
       body {
         font-family: arial;
@@ -126,7 +126,7 @@
       var spinnerElement = document.getElementById('spinner');
 
       var Module = {
-        INITIAL_MEMORY: 67108864,
+        INITIAL_MEMORY: 209715200,
         preRun: [],
         postRun: [],
         print: (function() {
@@ -180,7 +180,7 @@
           this.totalDependencies = Math.max(this.totalDependencies, left);
           Module.setStatus(left ? 'Preparing... (' + (this.totalDependencies-left) + '/' + this.totalDependencies + ')' : 'All downloads complete.');
         },
-        arguments: ["cell.ax"]
+        arguments: ["main.ax"]
       };
       Module.setStatus('Downloading...');
 
@@ -202,9 +202,9 @@ Module.expectedDataFileDownloads++;
       // worker
       PACKAGE_PATH = encodeURIComponent(location.pathname.toString().substring(0, location.pathname.toString().lastIndexOf('/')) + '/');
     }
-    var PACKAGE_NAME = 'cell.data';
-    var REMOTE_PACKAGE_NAME = (Module['filePackagePrefixURL'] || '') + 'cell.data';
-    var REMOTE_PACKAGE_SIZE = 14174;
+    var PACKAGE_NAME = 'main.data';
+    var REMOTE_PACKAGE_NAME = (Module['filePackagePrefixURL'] || '') + 'main.data';
+    var REMOTE_PACKAGE_SIZE = 20656;
     var PACKAGE_UUID = '51f84d03-0c74-4552-ac13-924e79e76977';
   
     function fetchRemotePackage(packageName, packageSize, callback, errback) {
@@ -305,10 +305,14 @@ function assert(check, msg) {
       },
     };
 
-      new DataRequest(0, 14174, 0, 0).open('GET', 'cell.ax');
-      new DataRequest(0, 0, 0, 0).open('GET', 'damage.wav');
-      new DataRequest(0, 0, 0, 0).open('GET', 'get.wav');
-      new DataRequest(0, 0, 0, 0).open('GET', 'move.wav');
+      new DataRequest(0, 20656, 0, 0).open('GET', 'main.ax');
+      new DataRequest(0, 0, 0, 0).open('GET', 'GameBoyPallet.pal');
+      new DataRequest(0, 0, 0, 0).open('GET', 'pic_Entity.png');
+      new DataRequest(0, 0, 0, 0).open('GET', 'pic_text.png');
+      new DataRequest(0, 0, 0, 0).open('GET', 'se0.wav');
+      new DataRequest(0, 0, 0, 0).open('GET', 'se1.wav');
+      new DataRequest(0, 0, 0, 0).open('GET', 'se2.wav');
+      new DataRequest(0, 0, 0, 0).open('GET', 'se3.wav');
 
 
     function processPackageData(arrayBuffer) {
@@ -322,15 +326,19 @@ function assert(check, msg) {
       Module['HEAPU8'].set(byteArray, ptr);
       DataRequest.prototype.byteArray = Module['HEAPU8'].subarray(ptr, ptr+byteArray.length);
 
-          DataRequest.prototype.requests["cell.ax"].onload();
-          DataRequest.prototype.requests["damage.wav"].onload();
-          DataRequest.prototype.requests["get.wav"].onload();
-          DataRequest.prototype.requests["move.wav"].onload();
+          DataRequest.prototype.requests["main.ax"].onload();
+          DataRequest.prototype.requests["GameBoyPallet.pal"].onload();
+          DataRequest.prototype.requests["pic_Entity.png"].onload();
+          DataRequest.prototype.requests["pic_text.png"].onload();
+          DataRequest.prototype.requests["se0.wav"].onload();
+          DataRequest.prototype.requests["se1.wav"].onload();
+          DataRequest.prototype.requests["se2.wav"].onload();
+          DataRequest.prototype.requests["se3.wav"].onload();
 
-          Module['removeRunDependency']('datafile_cell.data');
+          Module['removeRunDependency']('datafile_main.data');
 
     };
-    Module['addRunDependency']('datafile_cell.data');
+    Module['addRunDependency']('datafile_main.data');
   
     if (!Module.preloadResults) Module.preloadResults = {};
   
@@ -342,10 +350,10 @@ function assert(check, msg) {
         fetchedCallback = processPackageData;
       }
     
-        ENV.HSP_WX = "480";//スクリプトの動作解像度
-        ENV.HSP_WY = "800";
-        ENV.HSP_SX = "480";//表示解像度
-        ENV.HSP_SY = "800";
+        ENV.HSP_WX = "320";//スクリプトの動作解像度
+        ENV.HSP_WY = "480";
+        ENV.HSP_SX = "320";//表示解像度
+        ENV.HSP_SY = "480";
         ENV.HSP_AUTOSCALE = "0";//スケーリングモード
         ENV.HSP_FPS = "0";//フレームレート
         ENV.HSP_LIMIT_STEP = "15000";//ブラウザに処理を返すまでの実行ステップ数
